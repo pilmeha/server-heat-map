@@ -1,6 +1,12 @@
 # игнорируем виртуальное окружение
-venv/
+flaskSite/venv/
+
 # игнорируем базу данных
 database/sensor_data.db
+
+# игнорируем файл с переменными окружениями
+flaskSite/.env
+
 # игнорируем файлы компиляции
-server/__pycache__
+flaskSite/__pycache__
+flaskSite/instance
