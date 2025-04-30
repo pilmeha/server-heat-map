@@ -4,8 +4,8 @@ from app.models import Sensor
 
 
 @app.route('/')
-def home():
-    return render_template('home.html')
+def dome():
+    return render_template('dome.html')
 
 @app.route('/heatmap')
 def heatmap():

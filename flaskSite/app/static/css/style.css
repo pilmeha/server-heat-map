@@ -5,6 +5,13 @@
     background-size: cover;
 }
 
+#dome-container {
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    background-image: url('/static/images/heatmap.png');
+    background-size: cover;
+}
+
 body {
     background-color: rgb(36, 36, 36);
 }

@@ -5,12 +5,12 @@
     <ul>
       {% for sensor in sensors %}
         <li>
-          {{ sensor.sensor_id }}
-          {{ sensor.temperature }}
-          {{ sensor.humidity }}
-          {{ sensor.x }}
-          {{ sensor.y }}
-          {{ sensor.timestamp }}
+          id = {{ sensor.sensor_id }};
+          temperature = {{ sensor.temperature }};
+          humidity = {{ sensor.humidity }};
+          x = {{ sensor.x }};
+          y = {{ sensor.y }};
+          timestamp = {{ sensor.timestamp }};
         </li>
       {% endfor %}
     </ul>

@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const points = data.map(item => ({
                 x: Math.floor(item.x * (container.offsetWidth / 100)),
                 y: Math.floor(item.y * (container.offsetHeight / 100)),
-                value: item.temperature * 10,
+                value: item.temperature * 15,
                 radius: 50
             }));
             
             heatmap.setData({
                 data: points,
-                min: 20,
-                max: 40
+                min: -15,
+                max: 65
             });
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -41,21 +41,3 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHeatmap();
     setInterval(updateHeatmap, 3000);
 });
-
-//     // Обновление данных каждые 3 секунды
-//     function updateHeatmap() {
-//         fetch("/api/data")
-//             .then(response => response.json())
-//             .then(data => {
-//                 const points = data.map(item => ({
-//                     x: item.x * 8,  // Масштабирование под картинку
-//                     y: item.y * 8,
-//                     value: item.temperature * 10  // Усиление для визуализации
-//                 }));
-//                 heatmap.setData({ data: points });
-//             });
-//     }
-
-//     setInterval(updateHeatmap, 3000);
-//     updateHeatmap();
-// });
