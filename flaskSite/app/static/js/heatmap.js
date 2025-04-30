@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const points = data.map(item => ({
                 x: Math.floor(item.x * (container.offsetWidth / 100)),
                 y: Math.floor(item.y * (container.offsetHeight / 100)),
-                value: item.temperature * 15,
-                radius: 50
+                value: item.temperature * 25,
+                radius: 75
             }));
             
             heatmap.setData({
