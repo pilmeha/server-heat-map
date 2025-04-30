@@ -9,7 +9,8 @@ def home():
 
 @app.route('/heatmap')
 def heatmap():
-    return render_template('heatmap.html')
+    sensor = Sensor.query.all()
+    return render_template('heatmap.html', sensor=sensor)
 
 @app.route('/sensors')
 def sensors():
@@ -24,8 +25,8 @@ def sensor_data():
             sensor_id=data['sensor_id'],
             temperature=data['temperature'],
             humidity=data.get('humidity'),
-            x_coord=data['x'],
-            y_coord=data['y']
+            x=data['x'],
+            y=data['y']
         )
         db.session.add(new_data)
         db.session.commit()
@@ -35,7 +36,7 @@ def sensor_data():
     return jsonify([{
         'sensor_id': item.sensor_id,
         'temperature': item.temperature,
-        'x': item.x_coord,
-        'y': item.y_coord,
+        'x': item.x,
+        'y': item.y,
         'timestamp': item.timestamp.isoformat()
     } for item in data])

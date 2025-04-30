@@ -11,3 +11,6 @@ flaskSite/.env
 flaskSite/__pycache__
 flaskSite/instance
 flaskSite/app/__pycache__
+
+# игнорируем файлы миграции бд
+flaskSite/migrations

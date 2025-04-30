@@ -1,5 +1,6 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
 {% block content %}
-    <h1>Server Room Monitoring</h1>
-    <div id="heatmap-container"></div>
+    <div id="heatmap-container" style="width: 800px; height: 600px;"></div>
+    <script src="https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5"></script>
+    <script src="{{ url_for('static', filename='js/heatmap.js') }}"></script>
 {% endblock %}
