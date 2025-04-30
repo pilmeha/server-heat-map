@@ -10,3 +10,4 @@ flaskSite/.env
 # игнорируем файлы компиляции
 flaskSite/__pycache__
 flaskSite/instance
+flaskSite/app/__pycache__

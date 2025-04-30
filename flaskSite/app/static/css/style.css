@@ -1,0 +1,7 @@
+#heatmap-container {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    background: url("../images/server-room.png") no-repeat;
+    background-size: contain;
+}

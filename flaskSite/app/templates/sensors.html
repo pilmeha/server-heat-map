@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+
+{% block content %}
+    <h1>Sensors</h1>
+    <ul>
+      {% for sensor in sensors %}
+        <li>
+          {{ sensor.sensor_id }}
+          {{ sensor.temperature }}
+          {{ sensor.humidity }}
+          {{ sensor.x }}
+          {{ sensor.y }}
+          {{ sensor.timestamp }}
+        </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
