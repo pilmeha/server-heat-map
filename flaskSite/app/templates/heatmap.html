@@ -1,6 +1,36 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <div id="heatmap-container" style="width: 885px; height: 515px;"></div>
-    <script src="https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5"></script>
-    <script src="{{ url_for('static', filename='js/heatmap.js') }}"></script>
+<div class="dashboard">
+  <div class="header">
+    <h1>Тепловая карта серверной</h1>
+    <p class="subtitle">Визуализация распределения температуры в помещении</p>
+  </div>
+
+  <div class="heatmap-container">
+    <div id="heatmap" class="heatmap" style="width: 800px; height: 600px;"></div>
+    <div class="sensor-labels">
+      <div class="sensor" style="top: 20%; left: 30%;">eltex-1</div>
+      <div class="sensor" style="top: 40%; left: 60%;">eltex-2</div>
+      <div class="sensor" style="top: 70%; left: 25%;">eltex-3</div>
+      <div class="sensor" style="top: 50%; left: 75%;">eltex-4</div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="temp-indicator">
+      <span class="current-temp">33°C</span>
+      <span class="temp-label">Текущая температура</span>
+    </div>
+    <div class="load-indicator">
+      <div class="load-value">Нагрузка на кластер: 36%</div>
+      <div class="load-bar">
+        <div class="load-progress" style="width: 36%;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5"></script>
+<script src="{{ url_for('static', filename='js/heatmap.js') }}"></script>
 {% endblock %}
