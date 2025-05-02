@@ -1,1 +1,16 @@
 # server-heat-map
+## Что это за проект?
+Данный проект показывает тепловую карту серверной. Для визуализации распределения температуры в помещении. 
+Тепловая карта позволяет визуализировать распределение температуры в помещении, выявлять "горячие точки" и оптимизировать систему охлаждения. Использование ESP8266 с беспроводной передачей данных делает решение масштабируемым, энергоэффективным и удобным для интеграции в существующую инфраструктуру.
+## О команде
+## Скриншоты
+макеты:
+![MacBook Pro 14_](https://github.com/user-attachments/assets/30f689cb-6da3-4ed3-aee4-b09d450ef79d)
+![iPhone 16 - 1](https://github.com/user-attachments/assets/4fb675bd-ead7-4749-bba7-d92f81c3019c)
+Прототип:
+![Снимок экрана 2025-05-02 131714](https://github.com/user-attachments/assets/6d403632-591e-4541-abdb-f45fa691fa4c)
+![Снимок экрана 2025-05-02 131727](https://github.com/user-attachments/assets/b8d0b203-0b46-4a68-b325-779ec3609e10)
+![Снимок экрана 2025-05-02 131734](https://github.com/user-attachments/assets/afc28760-ef04-47e9-bf08-f1bcfd997035)
+![photo_2025-05-02_13-46-38](https://github.com/user-attachments/assets/3893e1d6-0106-4d75-b3d1-9fe9168d73d2)
+![photo_2025-05-02_13-46-36](https://github.com/user-attachments/assets/947c5e3d-dade-45ed-aadf-811b7cb73d36)
+![photo_2025-05-02_13-46-40](https://github.com/user-attachments/assets/a4af7dc1-c431-4e73-8b14-447b43e9ee02)
