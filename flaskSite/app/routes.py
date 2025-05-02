@@ -9,8 +9,8 @@ def dome():
 
 @app.route('/heatmap')
 def heatmap():
-    sensor = Sensor.query.all()
-    return render_template('heatmap.html', sensor=sensor)
+    sensors = Sensor.query.all()
+    return render_template('heatmap.html', sensors=sensors)
 
 @app.route('/sensors')
 def sensors():
