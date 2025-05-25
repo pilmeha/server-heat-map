@@ -14,6 +14,7 @@ def heatmap():
 
 @app.route('/sensors')
 def sensors():
+    # написать запрос, который будет показывать только униальыне датчики
     all_sensors = Sensor.query.all()
     return render_template('sensors.html', sensors=all_sensors)
 

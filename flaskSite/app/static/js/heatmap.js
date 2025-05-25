@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
           const points = data.map(sensor => ({
             x: Math.floor(sensor.x * (container.offsetWidth / 100)),
             y: Math.floor(sensor.y * (container.offsetHeight / 100)),
-            value: sensor.temperature * 10,
-            radius: 50
+            value: sensor.temperature,
+            radius: 100
           }));
           
           heatmapInstance.setData({
-            min: 20,
-            max: 40,
+            // min: 20,
+            // max: 40,
             data: points
           });
   
@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
       // Обновление UI
       document.querySelector('.current-temp').textContent = 
         `${Math.max(...Object.values(latestReadings).map(s => s.temperature))}°C`;
+      
+      document.querySelector('#temp-indic').textContent =
+        `${Math.max(...Object.values(latestReadings).map(s => s.temperature))}°C`;
+      
       
       // Здесь можно добавить обновление меток конкретных датчиков
     }

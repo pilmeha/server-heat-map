@@ -257,6 +257,10 @@ main {
     color: #3498db;
 }
 
+.load-change-color {
+    color:#e74c3c;
+}
+
 .load-change {
     font-size: 1.2rem;
     color: #27ae60;
@@ -265,6 +269,7 @@ main {
 .temperature-section {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    align-items: center;
     gap: 20px;
 }
 
@@ -307,7 +312,7 @@ main {
         padding: 0.75rem;
     }
 
-    .widget-section, .temperature-section {
+    .widget-section, .cluster-load {
         grid-template-columns: 1fr;
     }
     
