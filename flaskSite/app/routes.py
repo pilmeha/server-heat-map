@@ -18,6 +18,11 @@ def sensors():
     all_sensors = Sensor.query.all()
     return render_template('sensors.html', sensors=all_sensors)
 
+@app.route('/clever')
+def clever():
+    sensors = Sensor.query.all()
+    return render_template('clever.html', sensors=sensors)
+
 @app.route('/api/data', methods=['GET', 'POST'])
 def sensor_data():
     if request.method == 'POST':

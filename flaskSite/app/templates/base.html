@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- <meta content="width=device-width, initial-scale=1.0" name="viewport"/> -->
     <title>{% block title %}Server Heat Map{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/combinedStyle.css') }}"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -10,9 +12,11 @@
         <a href="{{ url_for('dome') }}" {% if request.endpoint == "dome" %} class="active" {% endif %}>Dome</a>
         <a href="{{ url_for('heatmap') }}" {% if request.endpoint == 'heatmap' %} class="active" {% endif %}>Heatmap</a>
         <a href="{{ url_for('sensors') }}" {% if request.endpoint == 'sensors' %} class="active" {% endif %}>Sensors</a>
+        <a href="{{ url_for('clever') }}" {% if request.endpoint == 'clever' %} class="active" {% endif %}>Clever</a>
     </nav>
     <div class="container">
-        {% block content %}{% endblock %}
+    <!-- <div class="dashboard-container"> -->
+    {% block content %}{% endblock %}
     </div>
 </body>
 </html>
