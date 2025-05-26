@@ -1,71 +1,46 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('clever');
+document.addEventListener('DOMContentLoaded', () => {
+  function getColorByTemp(temp) {
+    if (temp < 25) return '#3E63DD';   // холодный — синий
+    if (temp < 30) return '#46C2DB';   // умеренный — голубой
+    if (temp < 35) return '#fca311';   // тёплый — оранжевый
+    return '#dd3e3e';                  // горячий — красный
+  }
 
-    // Инициализация тепловой карты
-    const heatmapInstance = h337.create({
-      container: container,
-      radius: 60,
-      maxOpacity: 0.8,
-      gradient: {
-        '0.4': 'blue',
-        '0.6': 'cyan',
-        '0.7': 'lime',
-        '0.8': 'yellow',
-        '1.0': 'red'
-      }
-    });
-  
-    // Функция обновления данных
-    function updateHeatmap() {
-      fetch('/api/data')
-        .then(response => response.json())
-        .then(data => {
-          // Обновление тепловой карты
-          const points = data.map(sensor => ({
-            // x: Math.floor(sensor.x * (container.offsetWidth / 100)),
-            // y: Math.floor(sensor.y * (container.offsetHeight / 100)),
-            value: sensor.temperature,
-            // radius: 100
-          }));
-          
-          heatmapInstance.setData({
-            // min: 20,
-            // max: 40,
-            data: points
-          });
-  
-          // Обновление показаний датчиков
-          updateSensorReadings(data);
+  // Функция обновления меток
+  function updateLabels() {
+    fetch('/api/data')
+      .then(res => res.json())
+      .then(data => {
+        // Из оставшихся данных выбираем последнее значение по каждому sensor_id
+        const latest = {};
+        data.forEach(s => {
+          // пример s.sensor_id = "eltex-1"
+          if (!latest[s.sensor_id] || new Date(s.timestamp) > new Date(latest[s.sensor_id].timestamp)) {
+            latest[s.sensor_id] = s;
+          }
         });
-    }
-  
-    // Обновление показаний датчиков
-    function updateSensorReadings(data) {
-      const latestReadings = {};
-      data.forEach(sensor => {
-        if (!latestReadings[sensor.sensor_id] || 
-            new Date(sensor.timestamp) > new Date(latestReadings[sensor.sensor_id].timestamp)) {
-          latestReadings[sensor.sensor_id] = sensor;
-        }
-      });
-  
-      // Обновление UI
-      document.querySelector('#temp-point-1').textContent = 
-        `${Math.max(...Object.values(latestReadings).map(s => s.temperature))}°C`;
-      
-      document.querySelector('#temp-point-2').textContent = 
-        `${Math.max(...Object.values(latestReadings).map(s => s.temperature))}°C`;
 
-      document.querySelector('#temp-point-3').textContent = 
-        `${Math.max(...Object.values(latestReadings).map(s => s.temperature))}°C`;
+        // Для каждого ключа latest обновляем span#temp-point-{n}
+        Object.entries(latest).forEach(([sensorId, sensor]) => {
+          const match = sensorId.match(/(\d+)/); // eltex-1 -> 1
+          if (match) {
+            const idx = match[1];
+            const label = document.getElementById(`temp-point-${idx}`);
+            const circle = document.querySelector(`.circle-${idx}`);
+            if (label) {
+              label.textContent = `${sensor.temperature.toFixed(1)}°C`;
+            }
+            if (circle) {
+              circle.style.backgroundColor = getColorByTemp(sensor.temperature);
+            }
+          }
+        });
+      })
+      .catch(err => console.error('Error fetching sensor data:', err));
+  }
 
-      document.querySelector('#temp-point-4').textContent = 
-        `${Math.max(...Object.values(latestReadings).map(s => s.temperature))}°C`;
-  
-      // Здесь можно добавить обновление меток конкретных датчиков
-    }
-  
-    // Первоначальная загрузка и обновление каждые 5 секунд
-    updateHeatmap();
-    setInterval(updateHeatmap, 5000);
-  });
+  // Запускем сразу и потом каждую N-ую секунду
+  updateLabels();
+  setInterval(updateLabels, 5000);
+});
+
