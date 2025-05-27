@@ -1,11 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  function getColorByTemp(temp) {
-    if (temp < 25) return '#3E63DD';   // холодный — синий
-    if (temp < 30) return '#46C2DB';   // умеренный — голубой
-    if (temp < 35) return '#fca311';   // тёплый — оранжевый
-    return '#dd3e3e';                  // горячий — красный
-  }
-
   // Функция обновления меток
   function updateLabels() {
     fetch('/api/data')
@@ -21,22 +14,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Для каждого ключа latest обновляем span#temp-point-{n}
-        Object.entries(latest).forEach(([sensorId, sensor]) => {
-          const match = sensorId.match(/(\d+)/); // eltex-1 -> 1
-          if (match) {
-            const idx = match[1];
-            const label = document.getElementById(`temp-point-${idx}`);
-            const circle = document.querySelector(`.circle-${idx}`);
-            if (label) {
-              label.textContent = `${sensor.temperature.toFixed(1)}°C`;
-            }
-            if (circle) {
-              circle.style.backgroundColor = getColorByTemp(sensor.temperature);
-            }
+        Object.entries(latest).forEach(sensor => {
+          const idx = sensor.sensor_id.split(/[-_]/)[1];
+          const label = document.getElementById(`temp-point-${idx}`);
+          const circle = document.querySelector(`.circle-${idx}`);
+          const point = document.getElementById(`point-${sensor.sensor_id}`);
+          if (label) label.textContent = `${sensor.temperature.toFixed(1)}°C`;
+          if (circle) circle.style.backgroundColor = getColorByTemp(sensor.temperature);
+          if (point && sensor.x != null && sensor.y != null) {
+            point.style.left = `${sensor.x}%`;
+            point.style.top = `${sensor.y}%`;
           }
+
+
+          // const match = sensorId.match(/(\d+)/); // eltex-1 -> 1
+          // if (match) {
+          //   const idx = match[1];
+          //   const label = document.getElementById(`temp-point-${idx}`);
+          //   const circle = document.querySelector(`.circle-${idx}`);
+          //   const point = document.getElementById(`point-${sensor.sensor_id}`);
+          //   if (label) {
+          //     label.textContent = `${sensor.temperature.toFixed(1)}°C`;
+          //   }
+          //   if (circle) {
+          //     circle.style.backgroundColor = getColorByTemp(sensor.temperature);
+          //   }
+          //   // if (point && sensor.x !== undefined && sensor.y !== undefined) {
+          //   //   point.style.left = `${sensor.x}%`; // или `${sensor.x}px`, если абсолютные значения
+          //   //   point.style.top = `${sensor.y}%`;
+          //   // }
+          // }
         });
       })
       .catch(err => console.error('Error fetching sensor data:', err));
+
+    // document.getElementById("point-eltex-1").style.left = "50%";
+    // document.getElementById("point-eltex-1").style.top = "10%";
+
+    document.getElementById("point-eltex-2").style.left = "50%";
+    document.getElementById("point-eltex-2").style.top = "50%";
+
+    document.getElementById("point-eltex-3").style.left = "50%";
+    document.getElementById("point-eltex-3").style.top = "50%";
+
+    document.getElementById("point-eltex-4").style.left = "50%";
+    document.getElementById("point-eltex-4").style.top = "50%";
+
+  }
+
+  function getColorByTemp(temp) {
+    if (temp < 25) return '#3E63DD';   // холодный — синий
+    if (temp < 30) return '#46C2DB';   // умеренный — голубой
+    if (temp < 35) return '#fca311';   // тёплый — оранжевый
+    return '#dd3e3e';                  // горячий — красный
   }
 
   // Запускем сразу и потом каждую N-ую секунду

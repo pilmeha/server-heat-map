@@ -17,8 +17,8 @@ GyverHTU21D htu;
 
 // Уникальный ID и координаты датчика
 const String sensorId = "eltex-1";
-const float x = 75.0;  // координата x (% от ширины карты)
-const float y = 75.0;  // координата y (% от высоты карты)
+const float x = 150.0;  // координата x (% от ширины карты)
+const float y = 150.0;  // координата y (% от высоты карты)
 
 void setup() {
   Serial.begin(115200);
