@@ -53,10 +53,8 @@ nav a.active {
 }
 
 body {
-    /* background-color: #f5f5f5; */
     background-color: #171717;
     color: white;
-    /* color: #333; */
     line-height: 1.6;
 }
 
@@ -83,11 +81,6 @@ header h1 {
     margin-bottom: 30px;
     color: #2c3e50;
 }
-
-/* .header h1 {
-    color: #2c3e50;
-    margin-bottom: 5px;
-} */
 
 .subtitle {
     color: #7f8c8d;
@@ -137,7 +130,6 @@ main {
     display: block;
     background-image: url('/static/images/server-room.png');
     background-size: contain;
-    /* background-size: cover; */
     background-repeat: no-repeat;
     background-position: center;
     background-color: #f8f9fa;
@@ -258,7 +250,6 @@ main {
 
 
 .clever-body {
-    /* background-color: #171717; */
     align-items: center;
     display: flex;
     height: 100vh;
@@ -328,7 +319,6 @@ main {
     padding-top: 20px;
 }
 
-
 .petal {
     height: 100%;
     position: relative;
@@ -337,27 +327,15 @@ main {
     z-index: 1;
 }
 
-
 .clever-container {
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr 1fr;
     transform: rotate(45deg);
-    /* position: relative;  */
-    /* width: 100%; */
-    /* height: 100%; */
 }
-
-/* .clever {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-} */
 
 .clever-point {
     position: absolute;
-    /* transition: all 0.3s ease; */
     left: 50%;
     top: 0%;
     transform: translate(-50%, 0%);
@@ -369,39 +347,11 @@ main {
     transform: rotate(-45deg);
 }
 
-.petal:nth-child(1) > .label {
-    position: absolute;
-    right: 100px;
-    top: 30px;
-    /* transform: rotate(-45deg); */
-}
-.petal:nth-child(2) > .label {
-    position: absolute;
-    left: 100px;
-    bottom: 50px;
-    /* transform: rotate(-45deg); */
-}
-.petal:nth-child(3) > .label {
-    position: absolute;
-    right: 100px;
-    top: 50px;
-    /* transform: rotate(-45deg); */
-}
-.petal:nth-child(4) > .label {
-    position: absolute;
-    right: 100px;
-    bottom: 30px;
-    /* transform: rotate(-45deg); */
-}
-
 .label {
     backdrop-filter: blur(4px);
     padding: 10px 30px;
     border-radius: 100px;
-    /* background: rgba( 255, 255, 255, 0.25 ); */
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    /* transform: none !important; */
-    writing-mode: horizontal-tb; /* на всякий случай */
     text-orientation: mixed;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -415,8 +365,6 @@ main {
     width: 275px;
     position: absolute;
     border-radius: 50%;
-    /* filter: blur(80px); 
-    opacity: 0.6;  */
 }
 
 .center-mask {
@@ -427,6 +375,7 @@ main {
     transform: rotate(45deg);
     background: #171717;
 }
+
 .center-mask-2 {
     z-index: -1;
     position: absolute;
@@ -435,7 +384,6 @@ main {
     transform: rotate(-45deg);
     background: #171717;
 }
-
 
 .circle-1,
 .circle-2,
@@ -492,4 +440,3 @@ main {
         font-size: 1rem;
     }
 }
-

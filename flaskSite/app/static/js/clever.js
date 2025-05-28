@@ -25,29 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
             point.style.left = `${sensor.x}%`;
             point.style.top = `${sensor.y}%`;
           }
-
-
-          // const match = sensorId.match(/(\d+)/); // eltex-1 -> 1
-          // if (match) {
-          //   const idx = match[1];
-          //   const label = document.getElementById(`temp-point-${idx}`);
-          //   const circle = document.querySelector(`.circle-${idx}`);
-          //   const point = document.getElementById(`point-${sensor.sensor_id}`);
-          //   if (label) {
-          //     label.textContent = `${sensor.temperature.toFixed(1)}°C`;
-          //   }
-          //   if (circle) {
-          //     circle.style.backgroundColor = getColorByTemp(sensor.temperature);
-          //   }
-          //   // if (point && sensor.x !== undefined && sensor.y !== undefined) {
-          //   //   point.style.left = `${sensor.x}%`; // или `${sensor.x}px`, если абсолютные значения
-          //   //   point.style.top = `${sensor.y}%`;
-          //   // }
-          // }
         });
       })
       .catch(err => console.error('Error fetching sensor data:', err));
 
+    // Вручную указываем координаты точек
     // document.getElementById("point-eltex-1").style.left = "50%";
     // document.getElementById("point-eltex-1").style.top = "10%";
 
@@ -69,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return '#dd3e3e';                  // горячий — красный
   }
 
-  // Запускем сразу и потом каждую N-ую секунду
+  // Запускем сразу и потом каждую 5-ую секунду
   updateLabels();
   setInterval(updateLabels, 5000);
 });
