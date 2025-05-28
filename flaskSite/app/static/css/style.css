@@ -53,8 +53,8 @@ nav a.active {
 }
 
 body {
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #171717;
+    color: white;
     line-height: 1.6;
 }
 
@@ -81,11 +81,6 @@ header h1 {
     margin-bottom: 30px;
     color: #2c3e50;
 }
-
-/* .header h1 {
-    color: #2c3e50;
-    margin-bottom: 5px;
-} */
 
 .subtitle {
     color: #7f8c8d;
@@ -115,32 +110,6 @@ main {
     grid-template-columns: 1fr;
     gap: 30px;
 }
-/* .heatmap-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    padding-bottom: 62.5%; Соотношение сторон (500/800 = 0.625)
-    margin: 0 auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-} */
-
-/* .heatmap-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-} */
-
-/* .heatmap-image {
-    width: 100%;
-    height: auto;
-    display: block;
-} */
 
 .heatmap-container {
     position: relative;
@@ -161,29 +130,10 @@ main {
     display: block;
     background-image: url('/static/images/server-room.png');
     background-size: contain;
-    /* background-size: cover; */
     background-repeat: no-repeat;
     background-position: center;
     background-color: #f8f9fa;
 }
-
-/* .sensor-labels {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.sensor {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-weight: bold;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-} */
 
 .status-bar {
     display: flex;
@@ -296,6 +246,158 @@ main {
     background-color: #f8f9fa;
     border-radius: 5px;
     font-size: 1.1rem;
+}
+
+
+.clever-body {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+}
+
+.petal:nth-child(1) {
+    align-items: end;
+    border-radius: 100% 100% 0 100%;
+    display: flex;
+    height: 200px;
+    justify-content: end;
+    width: 200px;
+    box-shadow: 0 0 1px 1px #3E63DD50;
+}
+
+.petal:nth-child(1) > .petal-container {
+    padding-bottom: 30px;
+}
+
+
+.petal:nth-child(2) {
+    align-items: end;
+    border-radius: 100% 100% 100% 0;
+    display: flex;
+    height: 200px;
+    justify-content: start;
+    width: 200px;
+    box-shadow: 0 0 1px 1px #3E63DD50;
+}
+
+.petal:nth-child(2) > .petal-container {
+    padding-bottom: 20px;
+    padding-left: 30px;
+}
+
+.petal:nth-child(3) {
+    align-items: start;
+    border-radius: 100% 0 100% 100%;
+    display: flex;
+    height: 200px;
+    justify-content: end;
+    width: 200px;
+    box-shadow: 0 0 1px 1px #3E63DD50;
+}
+
+.petal:nth-child(3) > .petal-container {
+    padding-right: 30px;
+    padding-top: 20px;
+}
+
+.petal:nth-child(4) {
+    align-items: start;
+    border-radius: 0 100% 100% 100%;
+    display: flex;
+    height: 200px;
+    justify-content: start;
+    width: 200px;
+    box-shadow: 0 0 1px 1px #3E63DD50;
+}
+
+.petal:nth-child(4) > .petal-container {
+    padding-top: 20px;
+}
+
+.petal {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    backdrop-filter: blur(30px);
+    z-index: 1;
+}
+
+.clever-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    transform: rotate(45deg);
+}
+
+.clever-point {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 0%);
+    transform: rotate(-45deg);
+}
+
+.clever-container > .petal > .petal-container {
+    display: inline-block;
+    transform: rotate(-45deg);
+}
+
+.label {
+    backdrop-filter: blur(4px);
+    padding: 10px 30px;
+    border-radius: 100px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-orientation: mixed;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.main-circle {
+    z-index: -1;
+    background: #3E63DD;
+    height: 275px;
+    width: 275px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.center-mask {
+    z-index: -1;
+    position: absolute;
+    height: 280px;
+    width: 30px;
+    transform: rotate(45deg);
+    background: #171717;
+}
+
+.center-mask-2 {
+    z-index: -1;
+    position: absolute;
+    height: 280px;
+    width: 30px;
+    transform: rotate(-45deg);
+    background: #171717;
+}
+
+.circle-1,
+.circle-2,
+.circle-3,
+.circle-4 {
+    z-index: -2;
+    position: absolute;
+    filter: blur(20px);
+    background: #dd3e3e;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    transition: background-color 0.5s ease;
+    transform: translate(-50%, -50%);
 }
 
 /* Адаптивность */
