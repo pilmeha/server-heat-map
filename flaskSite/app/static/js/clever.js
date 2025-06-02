@@ -14,34 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Для каждого ключа latest обновляем span#temp-point-{n}
-        Object.entries(latest).forEach(sensor => {
-          const idx = sensor.sensor_id.split(/[-_]/)[1];
+        Object.entries(latest).forEach(([sensor_id, sensorData]) => {
+          const idx = sensor_id.split(/[-_]/)[1];
           const label = document.getElementById(`temp-point-${idx}`);
           const circle = document.querySelector(`.circle-${idx}`);
-          const point = document.getElementById(`point-${sensor.sensor_id}`);
-          if (label) label.textContent = `${sensor.temperature.toFixed(1)}°C`;
-          if (circle) circle.style.backgroundColor = getColorByTemp(sensor.temperature);
-          if (point && sensor.x != null && sensor.y != null) {
-            point.style.left = `${sensor.x}%`;
-            point.style.top = `${sensor.y}%`;
+          const point = document.getElementById(`point-${sensor_id}`);
+          if (label) label.textContent = `${sensorData.temperature.toFixed(1)}°C`;
+          if (circle) circle.style.backgroundColor = getColorByTemp(sensorData.temperature);
+          if (point && sensorData.x != null && sensorData.y != null) {
+            point.style.left = `${sensorData.x}%`;
+            point.style.top = `${sensorData.y}%`;
           }
         });
       })
       .catch(err => console.error('Error fetching sensor data:', err));
-
-    // Вручную указываем координаты точек
-    // document.getElementById("point-eltex-1").style.left = "50%";
-    // document.getElementById("point-eltex-1").style.top = "10%";
-
-    document.getElementById("point-eltex-2").style.left = "50%";
-    document.getElementById("point-eltex-2").style.top = "50%";
-
-    document.getElementById("point-eltex-3").style.left = "50%";
-    document.getElementById("point-eltex-3").style.top = "50%";
-
-    document.getElementById("point-eltex-4").style.left = "50%";
-    document.getElementById("point-eltex-4").style.top = "50%";
-
   }
 
   function getColorByTemp(temp) {

@@ -6,12 +6,12 @@
 // Конфигурация сети
 const char* ssid = "Ayur";
 const char* password = "12082005";
-const char* serverUrl = "http://172.20.10.2:5000/api/data";
+const char* serverUrl = "http://172.20.10.3:5000/api/data";
 
 // Конфигурация датчика
-const String sensorId = "eltex-1";
-const float x = 150.0;  // координата x
-const float y = 150.0;  // координата y
+const String sensorId = "eltex-2";
+const float x = 50;  // координата x (% от ширины карты)
+const float y = 50;  // координата y (% от высоты карты)
 const unsigned long sendInterval = 5000;  // интервал отправки (мс)
 
 // Экземпляры объектов
@@ -28,7 +28,7 @@ void setup() {
     Serial.println("ERROR: BME280 not found!");
     while (true) delay(1000);
   }
-  
+
   // Настройка параметров датчика
   bme.setStandbyTime(0);       // Без периода ожидания
   bme.setFilter(4);            // Максимальное сглаживание
@@ -51,15 +51,17 @@ void loop() {
       connectToWiFi();
     }
     
+    // Чтение данных с датчиков
     if (WiFi.status() == WL_CONNECTED) {
       float temperature = bme.readTemperature();
       float humidity = bme.readHumidity();
       
-      if (!isnan(temperature) && !isnan(humidity)) {
-        sendSensorData(temperature, humidity);
-      } else {
-        Serial.println("ERROR: Invalid sensor readings");
-      }
+      if (!isnan(temperature) && !isnan(humidity)) sendSensorData(temperature, humidity);
+      else Serial.println("ERROR: Invalid sensor readings");
+    } 
+    else {
+      Serial.println("WARNING: WiFi disconnected, reconnecting...");
+      connectToWiFi();
     }
   }
   
@@ -80,11 +82,8 @@ void connectToWiFi() {
     attempts++;
   }
   
-  if (WiFi.status() == WL_CONNECTED) {
-    Serial.println("\nConnected! IP: " + WiFi.localIP().toString());
-  } else {
-    Serial.println("\nERROR: WiFi connection failed");
-  }
+  if (WiFi.status() == WL_CONNECTED) Serial.println("\nConnected! IP: " + WiFi.localIP().toString());
+  else Serial.println("\nERROR: WiFi connection failed");
 }
 
 void sendSensorData(float temperature, float humidity) {
@@ -99,8 +98,7 @@ void sendSensorData(float temperature, float humidity) {
   String jsonStr;
   serializeJson(doc, jsonStr);
   
-  Serial.print("Sending: ");
-  Serial.println(jsonStr);
+  Serial.println("Sending: " + jsonStr);
   
   // Отправка данных
   http.begin(wifiClient, serverUrl);
@@ -110,13 +108,10 @@ void sendSensorData(float temperature, float humidity) {
   
   if (httpCode > 0) {
     Serial.printf("HTTP status: %d\n", httpCode);
-    if (httpCode == HTTP_CODE_OK) {
-      Serial.print("Response: ");
-      Serial.println(http.getString());
-    }
-  } else {
-    Serial.printf("HTTP error: %s\n", http.errorToString(httpCode).c_str());
-  }
+    if (httpCode == HTTP_CODE_OK) Serial.println("Response: " + http.getString());   
+  } 
+  else Serial.printf("HTTP error: %s\n", http.errorToString(httpCode).c_str());
+  
   
   http.end();
 }
