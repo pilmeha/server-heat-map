@@ -1,7 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <GyverHTU21D.h>
 #include <ESP8266HTTPClient.h>
-#include <ESP8266WiFi.h>
 #include <ArduinoJson.h>
 
 // Настройки Wi-Fi
