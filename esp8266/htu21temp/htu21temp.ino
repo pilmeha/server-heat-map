@@ -6,7 +6,10 @@
 // Конфигурация сети
 const char* ssid = "Ayur";
 const char* password = "12082005";
-const char* serverUrl = "http://172.20.10.3:5000/api/data";
+// const char* serverUrl = "http://172.20.10.3:5000/api/data";
+// const char* serverUrl = "https://ivanipatov.tech/api/data";
+const char* serverUrl = "http://82.202.141.26:5100/api/data";
+// const char* serverUrl = "http://ivanipatov.tech/api/data";
 // Адрес сервера
 // 172.20.10.2
 

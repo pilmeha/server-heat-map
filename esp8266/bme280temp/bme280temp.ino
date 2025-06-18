@@ -6,7 +6,8 @@
 // Конфигурация сети
 const char* ssid = "Ayur";
 const char* password = "12082005";
-const char* serverUrl = "http://172.20.10.3:5000/api/data";
+// const char* serverUrl = "http://172.20.10.3:5000/api/data";
+const char* serverUrl = "http://82.202.141.26:5100/api/data";
 
 // Конфигурация датчика
 const String sensorId = "eltex-2";
