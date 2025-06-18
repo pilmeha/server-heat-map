@@ -57,7 +57,7 @@ def dashboard():
         WHERE sensor_id = 'eltex-2'
         ORDER BY timestamp
     """
-    dfT2 = pd.read_sql(queryTemp1, db.engine)
+    dfT2 = pd.read_sql(queryTemp2, db.engine)
     figT2 = px.line(dfT2, x='timestamp', y='temperature', title='Температура (eltex-2)')
     plotT2 = figT2.to_html(full_html=False)
 
@@ -67,7 +67,7 @@ def dashboard():
         WHERE sensor_id = 'eltex-2'
         ORDER BY timestamp
     """
-    dfH2 = pd.read_sql(queryHumi1, db.engine)
+    dfH2 = pd.read_sql(queryHumi2, db.engine)
     figH2 = px.line(dfH2, x='timestamp', y='humidity', title='Влажность (eltex-2)')
     plotH2 = figH2.to_html(full_html=False)
 
@@ -78,7 +78,7 @@ def dashboard():
         WHERE sensor_id = 'eltex-3'
         ORDER BY timestamp
     """
-    dfT3 = pd.read_sql(queryTemp1, db.engine)
+    dfT3 = pd.read_sql(queryTemp3, db.engine)
     figT3 = px.line(dfT3, x='timestamp', y='temperature', title='Температура (eltex-3)')
     plotT3 = figT3.to_html(full_html=False)
 
@@ -88,7 +88,7 @@ def dashboard():
         WHERE sensor_id = 'eltex-3'
         ORDER BY timestamp
     """
-    dfH3 = pd.read_sql(queryHumi1, db.engine)
+    dfH3 = pd.read_sql(queryHumi3, db.engine)
     figH3 = px.line(dfH3, x='timestamp', y='humidity', title='Влажность (eltex-3)')
     plotH3 = figH3.to_html(full_html=False)
 
@@ -99,7 +99,7 @@ def dashboard():
         WHERE sensor_id = 'eltex-4'
         ORDER BY timestamp
     """
-    dfT4 = pd.read_sql(queryTemp1, db.engine)
+    dfT4 = pd.read_sql(queryTemp4, db.engine)
     figT4 = px.line(dfT4, x='timestamp', y='temperature', title='Температура (eltex-4)')
     plotT4 = figT4.to_html(full_html=False)
 
@@ -109,7 +109,7 @@ def dashboard():
         WHERE sensor_id = 'eltex-4'
         ORDER BY timestamp
     """
-    dfH4 = pd.read_sql(queryHumi1, db.engine)
+    dfH4 = pd.read_sql(queryHumi4, db.engine)
     figH4 = px.line(dfH4, x='timestamp', y='humidity', title='Влажность (eltex-4)')
     plotH4 = figH4.to_html(full_html=False)
 
