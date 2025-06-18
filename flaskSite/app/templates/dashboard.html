@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- <h2>График температуры по сенсору</h2>
+
+    <label for="sensorSelect">Выберите сенсор:</label>
+    <select id="sensorSelect">
+        <option value="eltex-1">eltex-1</option>
+        <option value="eltex-2">eltex-2</option>
+        <option value="sensor-xyz">sensor-xyz</option>
+    </select>
+
+    <div id="chart"></div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        const chartDiv = document.getElementById('chart');
+        const sensorSelect = document.getElementById('sensorSelect');
+
+        function loadChart(sensorId) {
+        fetch(`/api/chart-data/${sensorId}`)
+            .then(response => response.json())
+            .then(data => {
+            Plotly.newPlot(chartDiv, data.data, data.layout);
+            });
+        }
+
+        // Первичная загрузка
+        loadChart(sensorSelect.value);
+
+        // При изменении выбора
+        sensorSelect.addEventListener('change', () => {
+        loadChart(sensorSelect.value);
+        });
+    </script>
+    <select id="sensorSelect">
+        {% for sid in sensor_ids %}
+            <option value="{{ sid }}">{{ sid }}</option>
+        {% endfor %}
+    </select> -->
+    <!-- <p>дашборды и аналитика</p> -->
+
+    <h1>Графики температуры и влажности</h1>
+    <div class="tempHumiDash">
+        <div>
+            {{ plotT1 | safe }}
+        </div>
+        <div>
+            {{ plotH1 | safe }}
+        </div>
+        <div>
+            {{ plotT2 | safe }}
+        </div>
+        <div>
+            {{ plotH2 | safe }}
+        </div>
+        <div>
+            {{ plotT3 | safe }}
+        </div>
+        <div>
+            {{ plotH3 | safe }}
+        </div>
+        <div>
+            {{ plotT4 | safe }}
+        </div>
+        <div>
+            {{ plotH4 | safe }}
+        </div>
+    </div>
+{% endblock %}
