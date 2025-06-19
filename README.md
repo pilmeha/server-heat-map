@@ -20,7 +20,7 @@
 > ![mobileV](https://github.com/user-attachments/assets/f9b1b978-258e-4992-962c-7431bc45bbdc)
 > ![mobileV2](https://github.com/user-attachments/assets/b8e810f9-f0a9-4d78-9b67-daef5a86918c)
 > ![mobileV3](https://github.com/user-attachments/assets/b1f10c63-e1f8-4f60-8632-16eb400e3da8)
-### Черновой вариант:
+### Черновой вариант (MVP):
 #### ПК:
 > ![Снимок экрана 2025-05-02 131714](https://github.com/user-attachments/assets/6d403632-591e-4541-abdb-f45fa691fa4c)
 > ![Снимок экрана 2025-05-02 131727](https://github.com/user-attachments/assets/b8d0b203-0b46-4a68-b325-779ec3609e10)
